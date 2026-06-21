@@ -4,216 +4,270 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ST FAMILIA STAY | LAVA HOUSE</title>
+
   <style>
     :root {
       --ink: #181714;
-      --sand: #eee8dc;
-      --cream: #faf8f3;
+      --paper: #f6f3ed;
+      --sand: #ded6c8;
+      --gold: #b28a52;
       --line: rgba(24, 23, 20, .16);
-      --accent: #a86f42;
     }
 
     * { box-sizing: border-box; }
+
     html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
       color: var(--ink);
-      background: var(--cream);
+      background: var(--paper);
       font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans",
         "Yu Gothic", "Noto Sans JP", sans-serif;
-      line-height: 1.8;
+      line-height: 1.75;
     }
 
     .hero {
-      min-height: 88vh;
+      min-height: 100svh;
+      position: relative;
       display: flex;
       align-items: flex-end;
-      padding: 7vw;
-      color: white;
+      padding: 56px 7vw 72px;
+      color: #fff;
       background:
-        linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.7)),
-        url("https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=2200&q=85")
-        center/cover;
+        linear-gradient(90deg, rgba(0,0,0,.66), rgba(0,0,0,.18) 70%),
+        linear-gradient(0deg, rgba(0,0,0,.48), transparent 55%),
+        url("images/lava-exterior.jpg") center / cover no-repeat;
+    }
+
+    .hero-content {
+      max-width: 760px;
+      position: relative;
+      z-index: 1;
     }
 
     .eyebrow {
-      letter-spacing: .18em;
-      font-size: .78rem;
+      margin: 0 0 14px;
+      font-size: 11px;
       font-weight: 700;
+      letter-spacing: .22em;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 500;
+      line-height: 1.04;
     }
 
     h1 {
-      margin: .3rem 0 1.2rem;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(3rem, 9vw, 7.5rem);
-      line-height: .92;
-      letter-spacing: .03em;
+      font-size: clamp(68px, 11vw, 170px);
+      letter-spacing: -.055em;
+    }
+
+    .hero-copy {
+      margin: 24px 0 0;
+      font-size: 17px;
       font-weight: 500;
     }
 
-    .hero p {
-      max-width: 540px;
-      font-size: 1.05rem;
-      margin-bottom: 2rem;
+    .hero-description {
+      margin: 14px 0 0;
+      font-size: 14px;
+      max-width: 470px;
     }
 
     .button {
-      display: inline-block;
-      padding: .9rem 1.5rem;
-      border: 1px solid currentColor;
-      color: inherit;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 32px;
+      padding: 15px 27px;
+      border: 1px solid rgba(255,255,255,.85);
+      color: #fff;
       text-decoration: none;
-      letter-spacing: .08em;
-      font-size: .85rem;
-      transition: .25s;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      transition: .25s ease;
     }
 
     .button:hover {
-      background: white;
+      background: #fff;
       color: var(--ink);
     }
 
-    .intro, .stay, .reserve {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 100px 7vw;
-    }
-
     .intro {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 110px 7vw;
       text-align: center;
     }
 
-    .intro h2, .stay h2, .reserve h2 {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(2rem, 4vw, 3.8rem);
-      line-height: 1.15;
-      font-weight: 500;
-      margin: 0 0 1.5rem;
+    .intro h2 {
+      font-size: clamp(36px, 5vw, 64px);
     }
 
     .intro p {
-      max-width: 670px;
-      margin: auto;
-      font-size: 1.08rem;
+      max-width: 620px;
+      margin: 28px auto 0;
+      font-size: 16px;
     }
 
-    .stay {
+    .story {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 70px;
-      background: var(--sand);
-      max-width: none;
+      min-height: 680px;
     }
 
-    .stay-inner {
-      max-width: 1100px;
-      margin: auto;
-      display: contents;
+    .story-image {
+      min-height: 460px;
+      background: center / cover no-repeat;
     }
 
-    .stay ul {
-      padding: 0;
-      list-style: none;
-      border-top: 1px solid var(--line);
+    .bedroom { background-image: url("images/lava-bedroom.jpg"); }
+    .fireplace { background-image: url("images/lava-fireplace.jpg"); }
+    .onsen { background-image: url("images/lava-onsen.jpg"); }
+
+    .story-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 9vw;
     }
 
-    .stay li {
-      padding: 1rem 0;
-      border-bottom: 1px solid var(--line);
+    .story-text h2 {
+      font-size: clamp(42px, 5vw, 72px);
     }
+
+    .story-text p {
+      max-width: 430px;
+      margin: 26px 0 0;
+      font-size: 15px;
+    }
+
+    .story.reverse .story-image { order: 2; }
+    .story.reverse .story-text { order: 1; }
 
     .reserve {
+      padding: 120px 7vw;
       text-align: center;
+      color: #fff;
+      background: #1b1a17;
+    }
+
+    .reserve h2 {
+      font-size: clamp(42px, 6vw, 82px);
     }
 
     .reserve p {
-      max-width: 600px;
-      margin: 0 auto 2rem;
+      max-width: 520px;
+      margin: 24px auto 0;
+      color: rgba(255,255,255,.75);
     }
 
     .reserve .button {
-      background: var(--ink);
-      color: white;
-      border-color: var(--ink);
+      border-color: var(--gold);
+      background: var(--gold);
     }
 
     .reserve .button:hover {
       background: transparent;
-      color: var(--ink);
+      color: #fff;
     }
 
     footer {
-      padding: 2rem 7vw;
+      padding: 26px 7vw;
+      background: #12110f;
+      color: rgba(255,255,255,.52);
+      font-size: 11px;
+      letter-spacing: .12em;
       text-align: center;
-      font-size: .78rem;
-      letter-spacing: .1em;
-      border-top: 1px solid var(--line);
     }
 
-    @media (max-width: 700px) {
-      .hero { min-height: 78vh; padding: 9vw; }
-      .stay { grid-template-columns: 1fr; gap: 25px; }
-      .intro, .stay, .reserve { padding-top: 70px; padding-bottom: 70px; }
+    @media (max-width: 760px) {
+      .hero { padding: 42px 8vw 58px; }
+      .story { grid-template-columns: 1fr; }
+      .story.reverse .story-image,
+      .story.reverse .story-text {
+        order: initial;
+      }
+      .story-text { padding: 70px 8vw; }
+      .story-image { min-height: 430px; }
+      .intro { padding: 80px 8vw; }
     }
   </style>
 </head>
 
 <body>
   <section class="hero">
-    <div>
-      <div class="eyebrow">ST FAMILIA STAY</div>
+    <div class="hero-content">
+      <p class="eyebrow">ST FAMILIA STAY</p>
       <h1>LAVA<br>HOUSE</h1>
-      <p>
-        森に還る、火と温泉の時間。<br>
-        標高800mの森に佇む、源泉かけ流し温泉付き一棟貸し。
+      <p class="hero-copy">森に還る、火と温泉の時間。</p>
+      <p class="hero-description">
+        標高800mの森に佇む、源泉かけ流し温泉付き一棟貸し。<br>
+        火を眺め、深く眠り、自然の静けさに身を委ねる滞在を。
       </p>
       <a class="button" href="#reserve">RESERVE</a>
     </div>
   </section>
 
   <section class="intro">
-    <div class="eyebrow">A PRIVATE STAY IN THE FOREST</div>
-    <h2>ただいま、と言いたくなる<br>森の家。</h2>
+    <p class="eyebrow">A PRIVATE STAY IN THE FOREST</p>
+    <h2>ただ、森の時間に<br>身を委ねる。</h2>
     <p>
-      日常の速度から少し離れ、薪ストーブの火を眺める夜。<br>
-      朝は森の空気を吸い、いつでも温泉に身をゆだねる。<br>
-      LAVA HOUSEは、自然のなかで本来の自分に還るための一棟です。
+      都会の速度から少し離れ、薪の香り、湯気、木漏れ日とともに過ごす時間。<br>
+      LAVA HOUSEは、日常の外側にある静けさへ帰るための小さな隠れ家です。
     </p>
   </section>
 
-  <section class="stay">
-    <div>
-      <div class="eyebrow">THE HOUSE</div>
-      <h2>火、湯、森。<br>静けさを味わう滞在。</h2>
+  <section class="story">
+    <div class="story-image bedroom"></div>
+    <div class="story-text">
+      <p class="eyebrow">SLEEP IN THE WOODS</p>
+      <h2>深く眠る。</h2>
       <p>
-        1日1組だけのプライベートな空間。<br>
-        家族や大切な人と、何もしない豊かさをお過ごしください。
+        木に包まれた寝室。窓の向こうには、朝の森。<br>
+        光と影の移ろいに身をゆだね、時間を忘れる夜を。
       </p>
     </div>
+  </section>
 
-    <div>
-      <ul>
-        <li>源泉かけ流し温泉</li>
-        <li>薪ストーブ</li>
-        <li>森に囲まれたプライベート空間</li>
-        <li>一棟貸し・1日1組限定</li>
-        <li>標高約800mの静かな環境</li>
-      </ul>
+  <section class="story reverse">
+    <div class="story-image fireplace"></div>
+    <div class="story-text">
+      <p class="eyebrow">FIRE &amp; STILLNESS</p>
+      <h2>火を眺める。</h2>
+      <p>
+        薪ストーブの炎が揺れる夕暮れ。<br>
+        テラスの先に広がる森と、何もしないことを味わう贅沢。
+      </p>
+    </div>
+  </section>
+
+  <section class="story">
+    <div class="story-image onsen"></div>
+    <div class="story-text">
+      <p class="eyebrow">NATURAL HOT SPRING</p>
+      <h2>湯にほどける。</h2>
+      <p>
+        森を望む、源泉かけ流しの温泉。<br>
+        湯気の向こうに揺れる木々とともに、心と身体をゆっくりと解いていく。
+      </p>
     </div>
   </section>
 
   <section class="reserve" id="reserve">
-    <div class="eyebrow">STAY AT LAVA HOUSE</div>
-    <h2>ご予約・お問い合わせ</h2>
+    <p class="eyebrow">STAY AT LAVA HOUSE</p>
+    <h2>森の中の、<br>あなたの時間へ。</h2>
     <p>
-      現在、公式予約サイトを準備中です。<br>
-      ご予約については、下記よりお問い合わせください。
+      ご予約・お問い合わせは、現在準備中です。<br>
+      まずはAirbnbまたはお問い合わせ窓口へご案内します。
     </p>
-    <a class="button" href="mailto:YOUR-EMAIL@example.com">CONTACT US</a>
+    <a class="button" href="mailto:info@example.com">CONTACT</a>
   </section>
 
-  <footer>
-    ST FAMILIA STAY · LAVA HOUSE
-  </footer>
+  <footer>© ST FAMILIA STAY — LAVA HOUSE</footer>
 </body>
 </html>
